@@ -1,0 +1,65 @@
+<!-- templates/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Login</title>
+</head>
+<body>
+    <section style="display: flex; height: 100vh; justify-content: center; align-items: center; background: linear-gradient(
+        180deg, #090a10 10%, #1DD25E
+    );">
+        <div class="form login" style="animation: moveBannerCard 1s forwards;     box-shadow: #19A64D 3px 15px 15px; 
+        ">
+            <div class="form-content">
+                <header>Login</header>
+                <form method="POST">
+                    <div class="field input-field">
+                        <input type="text" name="user_id" placeholder="Enter user ID" required>
+                    </div>
+                    <div class="field input-field">
+                        <input type="password" name="password" placeholder="Enter password" required>
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+                    <div class="form-link">
+                        <a href="#" class="forgot-pass">Forgot password?</a>
+                    </div>
+                    <div class="field button-field">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+                <div class="form-link">
+                    <span>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></span>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class='bx bxl-facebook facebook-icon'></i>
+                    <span>Login with Facebook</span>
+                </a>
+            </div>
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <i class="bx bxl-google facebook-icon"></i>
+                    <span>Login with Google</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

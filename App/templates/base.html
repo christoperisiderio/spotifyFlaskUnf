@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <title>{% block title %}Re:Spotify{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/7181c71b59.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="form-container">
+            <div class="glitch"></div>
+        <div class="titlequote">
+            <h1>Find your Music</h1>
+        </div>
+        <div class="login">
+            <button onclick="window.location.href='{{ url_for('login') }}'">Login</button>
+            <div class="sublink">
+                <a href="#" class="forgot-pass">Forgot password?</a>
+                <a style="margin-left: 50px;"onclick="window.location.href='{{ url_for('register') }}'">Register</a>
+            </div>
+        </div>
+    </div>
+    <div class="landpage">
+        <div class="items">
+            <h1>Feel the Beat, Live the Rhythm.</h1>
+            <div class="line"></div>
+            <div class="list-item">
+                <li>Top Tracks</li>
+                <li>Billboard Charts</li>
+                <li>Top Artists</li>
+                <li>Top Playlists</li>
+                <li>Top Albums</li>
+            </div>
+            <h2>Tech</h2>
+            <div class="techused">
+                <i class="fa-brands fa-python"> </i>Python
+                <i class="fa-brands fa-python"> </i>Python-Flask
+                <i class="fa-brands fa-html5"> </i>HTML5
+                <i class="fa-brands fa-css3"> </i>CSS
+                <i class="fa-brands fa-js"> </i>Javascript
+            </div>
+            <h2>API</h2>
+            <div class="api-used">
+                <i class="fa-brands fa-spotify" style="color: white;"></i>Spotify Web Api
+            </div>
+            <footer>
+                <div style="display: flex; justify-content: space-around; font-size: 40px; margin-bottom: 20px;">
+                    <i class="fa-brands fa-github"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </div>
+               
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

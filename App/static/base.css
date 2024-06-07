@@ -1,0 +1,319 @@
+@font-face {
+  font-family: 'Gramatika Black';
+  src: url('fonts/Gramatika-Black.woff2') format('woff2'),
+       url('fonts/Gramatika-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gramatika Black', sans-serif;
+}
+
+
+
+body{
+    color: #1DD25E;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    font-family: 'GramatikaBlack', sans-serif;
+    background: linear-gradient(
+        180deg, #090a10 10%, #1da950
+    );
+}
+
+
+.titlequote{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.form-container{
+    animation: moveBannerCard 1s forwards ease-in-out;
+    margin-left: 50px;
+    box-shadow: #19A64D 3px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    padding: 30px;
+    height: 80vh;
+    justify-content: center;
+}
+
+.form-container div{
+    margin-bottom: 10px;
+}
+.glitch{
+    width: 100%;
+    height: 120px;
+    background: url('./images/main.png');
+    background-size: contain;
+    animation: glitch 2.5s infinite steps(1);
+}
+@keyframes glitch {
+    0%{
+        background: url('./images/main.png');
+        background-size: contain;
+        opacity: 1;
+    }
+    92.5%{
+        background: url('./images/1.png');
+        background-size: cover;
+        opacity: 1;
+    }
+    95%{
+        background: url('./images/2.png');
+        background-size: cover;
+        opacity: 1;
+    }
+    97%{
+        background: url('./images/3.png');
+        background-size: cover;
+        opacity: 1;
+    }
+    98.5%{
+        opacity: 0;
+    }
+    100%{
+        background: url('./images/main.png');
+        background-size: contain;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    body{
+        flex-direction: column;
+        align-items: center;
+        height: max-content;
+    }
+    .form-container{
+        width: 100vw;
+    }
+    .glitch{
+        height: 60px;
+        background-size: contain;
+        animation: none;
+    }
+    footer{
+        opacity: 0;
+    }
+}
+
+
+@keyframes moveBannerCard {
+    from{
+     transform: translateY(150px);
+     opacity: 0.3;
+    }
+    to{
+     transform: translateX(0);
+     opacity: 1;
+    }
+ }
+button, button::after {
+    width: 80%;
+    height: 80px;
+    font-size: 36px;
+    font-family: 'Bebas Neue', cursive;
+    background: #1DD25E;
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 88px;
+    border-radius: 10px;
+    box-shadow: 5px 0px 0px #1DD25E;
+    outline: transparent;
+    position: relative;
+  }
+  
+  button::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    
+    content: 'LOGIN';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #1DD25E 3%, #1DD25E 5%, #161b24 5%);
+    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #1DD25E;
+    clip-path: var(--slice-0);
+  }
+  
+  button:hover::after {
+    animation: 1s glitchButton;
+    animation-timing-function: steps(2, end);
+  }
+  
+  @keyframes glitchButton {
+    0% {
+      clip-path: var(--slice-1);
+      transform: translate(-20px, -10px);
+    }
+    10% {
+      clip-path: var(--slice-3);
+      transform: translate(10px, 10px);
+    }
+    20% {
+      clip-path: var(--slice-1);
+      transform: translate(-10px, 10px);
+    }
+    30% {
+      clip-path: var(--slice-3);
+      transform: translate(0px, 5px);
+    }
+    40% {
+      clip-path: var(--slice-2);
+      transform: translate(-5px, 0px);
+    }
+    50% {
+      clip-path: var(--slice-3);
+      transform: translate(5px, 0px);
+    }
+    60% {
+      clip-path: var(--slice-4);
+      transform: translate(5px, 10px);
+    }
+    70% {
+      clip-path: var(--slice-2);
+      transform: translate(-10px, 10px);
+    }
+    80% {
+      clip-path: var(--slice-5);
+      transform: translate(20px, -10px);
+    }
+    90% {
+      clip-path: var(--slice-1);
+      transform: translate(-10px, 0px);
+    }
+    100% {
+      clip-path: var(--slice-1);
+      transform: translate(0);
+    }
+  }
+
+  .login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .login .sublink{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sublink a{
+    color: white;
+  }
+
+.landpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    height: 100vh;
+}
+.landpage .items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.items{
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+}
+.items h2{
+    mask-image: linear-gradient( rgba(0,0,0,0.02),#000);
+    animation: moveBannerCard 1.1s forwards ease-in;
+    margin: 10px;
+    align-self: center;
+}
+.landpage .items h1{
+    animation: moveBannerCard 1s forwards ease-in-out;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 50px;
+    mask-image: linear-gradient(rgba(0,0,0,0.000002), #19A64D);
+}
+
+.techused{
+    animation: moveBannerCard 1.4s forwards ease-in-out;
+    display: flex;
+    justify-content: space-evenly;
+}
+@keyframes fadeAnimation{
+    0%{
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+}
+.techused i{
+    animation: fadeAnimation 1.4s forwards ease-in-out;
+    font-size: 20px;
+}
+.list-item{
+    animation: moveBannerCard 1.2s forwards ease-in-out;
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+.api-used{
+    animation: moveBannerCard 1.7s forwards ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.api-used i{
+    margin-right: 10px;
+}
+.line{
+    position: relative;
+    height: 3px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #AEC3B7;
+    animation: lineGen 2s forwards ease-in;
+}
+@keyframes lineGen{
+    0%{
+        height: 0;
+        opacity: 0;
+        width: 0%;
+    }
+    100%{
+        height: 3px;
+        opacity: 1;
+        width: 100%;
+    }
+}
+.line::before{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #8b8b8b;
+    padding: 0 15px;
+}
+
+footer{
+    bottom: 20px;
+    position: absolute;
+    align-self: center;
+    animation: fadeAnimation 3s forwards ease-in;
+    width: 60vw;
+}

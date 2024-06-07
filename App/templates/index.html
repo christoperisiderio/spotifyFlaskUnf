@@ -1,0 +1,97 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        @font-face {
+            font-family: 'Gramatika Black';
+            src: url('fonts/Gramatika-Black.woff2') format('woff2'),
+                 url('fonts/Gramatika-Black.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+          }
+        
+        * {
+            font-family: 'GramatikaBlack', sans-serif;
+        }
+
+        #logo-spotify{
+            height: 15px;
+            width: 15px;  
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            box-shadow: none;
+        }
+        .artist, .album {
+            position: relative;
+            min-width: 150px;
+            max-width: 150px;
+            padding: 5px;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        .artist img, .album img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 4px 1px -1px #1ED760;
+        }
+    </style>
+</head>
+<body style="background: #121212; overflow-x: hidden; width: 100vw;">
+    <h1 style="color: white; padding: 10px;">Welcome to Re:<span style="color: #1ED660">Spotify</span></h1>
+    <div style="display: flex; width: 95vw; justify-content: end; align-items: center; margin-right: 10px; padding: 10px;">
+        <div style="margin-right: 10px;">
+            <form action="{{ url_for('search') }}" method="POST">
+                <input type="text" name="artist_name" placeholder="Enter artist name" required>
+            </form>
+        </div>
+        <div style="margin-right: 10px;">
+            <form action="{{ url_for('search_song') }}" method="POST">
+                <input type="text" name="song_name" placeholder="Enter song name" required>
+            </form>
+    </div>
+</div>
+    <li style="list-style-type: none; width: 95vw; display: flex; justify-content: end; align-items: center; "><a style="color: white; text-decoration: none; border: 1px solid #1ED660; border-radius: 20px; padding: 10px;" href="{{ url_for('logout') }}">Logout</a></li>
+    
+    <h2 style="color: white;">Top Artists</h2>
+    <div style="display: flex; flex-wrap: wrap; width: 98vw;">
+        {% for artist in top_artists %}
+            <div class="artist">
+                {% if artist.image %}
+                    <img class="main-image" src="{{ artist.image }}" alt="{{ artist.name }}" style="width: 150px; height: 150px;">
+                    <img id="logo-spotify" src="{{ url_for('static', filename='images/cut-logo.png') }}" alt="Spotify Logo">
+                {% else %}
+                    <div style="width: 150px; height: 150px; background: grey; border-radius: 50%;"></div>
+                {% endif %}
+                <p style="color: white;">{{ artist.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    
+    <h2 style="color: white;">Top Albums</h2>
+    <div style="display: flex; flex-wrap: wrap; width: 98vw;">
+        {% for album in top_albums %}
+            <div class="album">
+                {% if album.image %}
+                    <img class="main-image" src="{{ album.image }}" alt="{{ album.name }}">
+                    <img id="logo-spotify" src="{{ url_for('static', filename='images/cut-logo.png') }}" alt="Spotify Logo">
+                {% else %}
+                    <div style="width: 150px; height: 150px; background: grey; border-radius: 50%;"></div>
+                {% endif %}
+                <p style="color: white;">{{ album.name }} by {{ album.artist_name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    
+</body>
+</html>

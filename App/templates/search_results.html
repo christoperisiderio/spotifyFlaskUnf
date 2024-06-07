@@ -1,0 +1,23 @@
+<!-- templates/search_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body style="background: #121212; min-height: 100vh; max-height: auto;">
+    <h1>Search Results</h1>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% if artists %}
+        <ul>
+            {% for artist in artists %}
+                <li><a href="{{ url_for('artist', artist_id=artist.id) }}">{{ artist.name }}</a> - Followers: {{ artist.followers.total }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No artists found.</p>
+    {% endif %}
+</body>
+</html>

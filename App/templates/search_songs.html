@@ -1,0 +1,21 @@
+<!-- templates/search_song_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Search Results</title>
+</head>
+<body style="background: #121212;">
+    <h1>Song Search Results</h1>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    <ul>
+        {% for song in songs %}
+                <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/{{ song.id }}?utm_source=generator" width="100%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <hr>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href='{{ url_for('base') }}'">Home</button>
+</body>
+</html>
