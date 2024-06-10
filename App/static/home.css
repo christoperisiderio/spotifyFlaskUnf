@@ -12,7 +12,6 @@
     font-style: normal;
 }
 
-
 html{
     scroll-behavior: smooth;
 }
@@ -46,8 +45,9 @@ body {
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
-    animation: blurIn 5s ease-in-out;
+    /* animation: blurIn 5s ease-in-out; */
     visibility: hidden;
+    opacity: 0;
 }
 
 .blockdiv > h1{
@@ -60,6 +60,138 @@ body {
     color: #1ed660;
 }
 
+.createplaylists{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: visibility 500ms ease, opacity 500ms ease;
+    /* animation: blurIn 5s ease-in-out; */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none; 
+}
+
+.createplaylists.active{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; 
+}
+
+.create-container{
+    width: 39%;
+    height: 59%;
+    border-radius: 10px;
+    background: #282828;
+   
+}
+.editbutton{
+    display: flex;
+    height: fit-content;
+    margin-right: 25px;
+    justify-content: end;
+    box-sizing: border-box;
+}
+.editbutton button{
+    padding: 15px;
+    border-radius: 100vw;
+    font-size: 13px;
+}
+
+.create-container .whitetext{
+    height: 20%;
+    padding: 25px;
+    font-size: 10px;
+    color: #fff;
+    box-sizing: border-box;
+    background: #282828;
+    border-radius: 0 0 10px 10px;
+}
+
+.edit-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    color: #fff;
+    font-size: 23px;
+}
+.details-info{
+    display: flex;
+    gap: 15px;
+    height: 60%;
+    box-sizing: border-box;
+    padding: 25px;
+}
+
+.details-img{
+    border-radius: 4px;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #282828;    
+    box-shadow: 3px 3px 7px 1px;
+    box-sizing: border-box;
+    border: 2px solid #3E3E3E;
+    
+    cursor: pointer; /* Change cursor to pointer */
+    background-size: cover; /* Ensure the image covers the div */
+    background-position: center; /* Center the background image */
+}
+
+.details-img i{
+    font-size: 55px;
+    color: #3E3E3E;
+}
+
+.text-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+}
+.details-img input[type="file"] {
+    display: none;
+}
+
+#playlistname{
+    padding: 15px;
+    background: #3E3E3E;
+    width: 100%;
+    height: 20%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    caret-color: #fff;
+}
+#playlistname::placeholder{
+    color: #757575;
+    font-size: 16px;
+}
+#playlistdesc{
+    resize: none;
+    padding: 0 10px;
+    background: #3E3E3E;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #ccc;
+    caret-color: #fff;
+}
+
+
 @keyframes moveIn {
     0%{
         transform: translateY(-300px);
@@ -67,10 +199,12 @@ body {
     30%{
         transform: translateY(0);
         opacity: 1;
+        scale: 1 1;
     }
     100%{
         transform: translateY(400px);
         opacity: 0;
+        scale: 0.9 1;
     }
 }
 
@@ -116,15 +250,18 @@ body {
     background: black;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     opacity: 1;
 }
 .left-sticky{
     display: flex;
     border-radius: 10px;
     width: 25%;
+    padding: 5px    ;
     align-items: center;
     transition: background 500ms;
     cursor: pointer;
+    height: 70%;
 }
 .left-sticky:hover{
     background: #858585;
@@ -228,7 +365,7 @@ body {
     border-radius: 5px;
     width: 100%;
     height: 18vh;
-    background: rgb(28, 29, 30);
+    background: #121212;
 }
 .upper-left a{
     font-size: 1rem;
@@ -240,7 +377,7 @@ body {
     width: 100%;
     height: 80.8vh;
     border-radius: 5px;
-    background: rgb(28, 29, 30);
+    background: #121212;
     overflow: hidden;
 }
 .header-bottom-left{
@@ -313,18 +450,77 @@ body {
 .content-bottom-left{
     display: flex;
     flex-direction: column;
+    gap: 15px;
     padding: 10px;
     overflow-y: scroll;
     height: 47vh;
-    gap: 15px;
 }
-.inner-content{
+
+.create-playlist{
+    box-sizing: border-box;
+    width: 98%;
     display: flex;
+    flex-direction: column;
+    height: 40%;
+    border-radius: 10px;
+    background: #242424;
+    padding: 17px;
+    gap: 19px;
+    height: fit-content;
+}
+.create-playlist .ctext h5{
+    font-size: clamp(17px, 20%, 20px);
+}
+.create-playlist .ctext p{
+    font-size: clamp(14px, 20%, 20px);
+}
+.create-playlist .c{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    border-radius: 100vw;
+    background: #F6F6F6;
+    color: #000000;
+    font-size: 14px;
+    transition: all 400ms;
+}
+
+.c:hover{
+    scale: 1.050;
+    background: #1ed660;
+    color: #F6F6F6;
+}
+
+.create-playlist .e{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    border-radius: 100vw;
+    background: #F6F6F6;
+    color: #000000;
+    font-size: 14px;
+    transition: all 400ms;
+}
+
+.e:hover{
+    scale: 1.050;
+    background: #1ed660;
+    color: #F6F6F6;
+}
+
+
+
+.inner-content{
     margin-top: 10px;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
     transition: all 500ms;
+    display: none;
 }
 
 
@@ -479,7 +675,7 @@ body {
 
 .play-shuffle{
     border-radius: 15px 15px 0 0;
-    background: rgb(28, 29, 30); 
+    background: #121212;
     display: flex;
     width: 100%;
     height: 13vh;
@@ -517,7 +713,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(10, .5fr);
     width: 100%;
-    background: rgb(28, 29, 30);
+    background: #121212;
 }
 
 .musics .music-title{
@@ -544,43 +740,6 @@ body {
     color: #fff;
     margin-left: 5px;
     font-size: 13px;
-}
-
-.create-playlist{
-    box-sizing: border-box;
-    width: 98%;
-    display: flex;
-    flex-direction: column;
-    height: 40%;
-    border-radius: 10px;
-    background: #242424;
-    padding: 17px;
-    gap: 19px;
-    height: fit-content;
-}
-.create-playlist .ctext h5{
-    font-size: clamp(15px, 20%, 20px);
-}
-.create-playlist .ctext p{
-    font-size: clamp(12px, 20%, 20px);
-}
-.create-playlist .c{
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6px;
-    border-radius: 100vw;
-    background: #F6F6F6;
-    color: #000000;
-    font-size: 12px;
-    transition: all 400ms;
-}
-
-.c:hover{
-    scale: 1.050;
-    background: #1ed660;
-    color: #F6F6F6;
 }
 
 @media (max-width: 1361px) {

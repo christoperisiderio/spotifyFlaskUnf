@@ -38,12 +38,19 @@
             </div>
             <div class="content-bottom-left" style="color: white;">
                 <div class="content-bottom-left" style="color: white;">
+                    <div class="inner-content">
+                        <img id="chosenImg" src="">
+                        <div class="info">
+                            <h4 id="playlistTitle">Title</h4>
+                            <p>Playlist - Christoper Isiderio</p>
+                        </div>
+                    </div>
                     <div class="create-playlist">
                         <div class="ctext">
                             <h5>Create your first playlist</h5>
                             <p>It's easy, we'll help you</p>
                         </div>
-                        <div class="c">Create Playlist</div>
+                        <div class="e">Create Playlist</div>
                     </div>
                     <div class="create-playlist">
                         <div class="ctext">
@@ -263,6 +270,28 @@
     <div class="blockdiv">
         
         <h1>Welcome, <span>{{ username }}</span></h1>
+    </div>
+    <div class="createplaylists">
+        <div class="create-container">
+            <div class="edit-details">
+                <p><strong>Edit details</strong></p>
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="details-info">
+                <div class="details-img">
+                    <i class="fa-solid fa-music"></i>
+                    <input type="file" id="fileInput" accept="image/jpeg, image/png">
+                </div>
+                <div class="text-details">
+                    <input type="text" name="playlistname" id="playlistname" placeholder="Add a name" autofocus value="My Playlist #1">
+                    <textarea type="text" name="playlistdesc" id="playlistdesc"></textarea>
+                </div>
+            </div>
+            <div class="editbutton">
+                <button id="saveButton">Save</button>
+            </div>
+            <p class="whitetext">By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='home.js') }}"></script>
