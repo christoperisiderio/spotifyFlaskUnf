@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music For Everyone</title>
+    <link rel="icon" type="image/gif/x-icon" href={{ url_for('static', filename='images/home/Spotify_Primary_Logo_RGB_Green.png') }}>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <script src="https://kit.fontawesome.com/7181c71b59.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="left">
+        <div class="upper-left">
+            <a href=""><i class="fa-solid fa-house"></i><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</strong></a>
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search</strong></a>
+        </div>
+        <div class="bottom-left">
+            <div class="header-bottom-left">
+                
+                <h4>Your Library</h4>
+                <div class="icons">
+                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="option-bottom-left">
+                <div class="inner-option">
+                    <a href="#"><strong>Playlists</strong></a>
+                    <a href="#"><strong>Podcast & Shows</strong></a>
+                    <a href="#"><strong>Albums</strong></a>
+                    <a href="#"><strong>Artists</strong></a>
+                    <a href="#"><strong>Downloaded</strong></a>
+                </div>
+            </div>
+            <div class="search-recents">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p><strong>Recents&nbsp;<i class="fa-solid fa-bars"></i></i></strong></p>
+            </div>
+            <div class="content-bottom-left" style="color: white;">
+                <div class="content-bottom-left" style="color: white;">
+                    <div class="create-playlist">
+                        <div class="ctext">
+                            <h5>Create your first playlist</h5>
+                            <p>It's easy, we'll help you</p>
+                        </div>
+                        <div class="c">Create Playlist</div>
+                    </div>
+                    <div class="create-playlist">
+                        <div class="ctext">
+                            <h5>Let's find some podcasts to follow</h5>
+                            <p>We'll keep you updated on new episodes</p>
+                        </div>
+                        <div class="c">Browse Podcasts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="right">
+        <section class="header-right">
+            <div class="top-header">
+                <div class="icon-chevron">
+                    <i class="fa-solid fa-circle-chevron-right fa-rotate-180"></i>
+                    <i class="fa-solid fa-circle-chevron-right" style="color: rgb(122, 122, 132);"></i>
+                </div>
+                <div class="social-notif">
+                    <i class="fa-regular fa-bell"></i>
+                    <i class="fa-solid fa-users-line"></i>
+                    <p>{{ username[0].upper() }}</p>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="image">
+                    <img id="img" src={{ url_for('static', filename='images/home/cover.jpg') }} alt="">
+                    <p id="photo">Choose photo</p>
+                </div>
+                <div class="image-info">
+                    <p>Public Playlist</p>
+                    <h1>I HAVE NO ENEMIES</h1>
+                    <p style="color: #A0A0A0; font-size: 12px;">After Villain Arc. IG: @topeeezxcy</p>
+                    <div class="small-details">
+                        <img src={{ url_for('static', filename='images/home/1.jpg') }}>
+                        <p><strong>Christoper Isiderio - 171 items, 9hr 23min</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="play-shuffle">
+            <div class="play">
+                <i class="fa-sharp fa-solid fa-circle-play" style="font-size: 55px; color: #1ED660;"></i>
+                <i class="fa-solid fa-shuffle" style="font-size: 25px;"></i>
+                <i class="fa-solid fa-circle-arrow-down" style="font-size: 25px; color: #1ED660;"></i>
+                <i class="fa-solid fa-user-plus" style="font-size: 25px;"></i>
+                <i class="fa-solid fa-ellipsis" style="font-size: 25px;"></i>
+            </div>
+            <div class="date">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Date added</p>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>  
+        <div class="musics">
+            <p class="music-title" style="font-size: 15px; margin-bottom: 10px; margin-left: 20px;"><strong># Title</strong></p>
+            <p class="music-title" style="font-size: 15px; margin-bottom: 30px;"><strong>Album or Podcast</strong></p>
+            <p class="music-title" style="font-size: 15px;"><strong>Date added</strong></p>
+            <p class="music-title" style="font-size: 15px;"><i class="fa-regular fa-clock"></i></p>
+            
+
+            <div class="music-content">
+                <p>1</p>
+                <img src={{ url_for('static', filename='images/home/killswitch.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Killswitch Lullabye</strong></p>
+                    <p><i class="fa-solid fa-circle-arrow-down" style="color: #1ED660;"></i>&nbsp;Flawed mangoes</p>
+                </div>
+            </div>
+            <p class="music-title">Saan?</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">3:27</p>
+
+            <div class="music-content">
+                <p>2</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>3</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>4</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>5</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>6</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>7</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>8</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            <div class="music-content">
+                <p>9</p>
+                <img src={{ url_for('static', filename='images/home/4.jpg') }}>
+                <div class="music-content-details">
+                    <p><strong>Saan?</strong></p>
+                    <p>Maki</p>
+                </div>
+            </div>
+            <p class="music-title">UTOPIA</p>
+            <p class="music-title">3 weeks ago</p>
+            <p class="music-title">5:54</p>
+
+            
+
+        </div>
+    </section>
+    <div class="sticky-div">
+        <div class="left-sticky">
+            <img src={{ url_for('static', filename='images/home/killswitch.jpg') }}>
+            <div class="inner-left-sticky">
+                <p><strong>Killswitch Lullabye</strong></p>
+                <p style="font-size: 10px;">Flawed Mangoes</p>
+            </div>
+        </div>
+        <div class="center-sticky">
+            <div class="playset">
+                <i class="fa-solid fa-shuffle"></i>
+                <i class="fa-solid fa-forward-step fa-rotate-180"></i>
+                <i class="fa-solid fa-circle-play" style="color: #ffffff; font-size: 30px;"></i>
+                <i class="fa-solid fa-forward-step"></i>
+                <i class="fa-solid fa-arrows-rotate"></i>
+            </div>
+            <div class="progressbar" id="barr" >
+                <p>0:21</p>
+                <div class="bar">
+                    <div class="innerbar">
+                        <div class="dot" id="dott" draggable="true"></div>
+                    </div>
+                </div>
+                <p>2:27</p>
+            </div>
+        </div>
+        <div class="right-sticky">
+            <div class="right-sticky-icons">
+                <i class="fa-solid fa-square-caret-right"></i>
+                <i class="fa-solid fa-layer-group"></i>
+                <i class="fa-solid fa-computer"></i>
+                <i class="fa-solid fa-volume-high"></i>
+                <div class="progressbar" id="progressb" style="margin-right: 15px;">
+                    <div class="bar">
+                        <div class="innerbar"></div>
+                    </div>
+                </div>
+                <i class="fa-regular fa-window-restore"></i>
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </div>
+        </div>
+    </div>
+    <div class="blockdiv">
+        
+        <h1>Welcome, <span>{{ username }}</span></h1>
+    </div>
+
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
+</body>
+</html>

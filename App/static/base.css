@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Gramatika Black';
-  src: url('fonts/Gramatika-Black.woff2') format('woff2'),
-       url('fonts/Gramatika-Black.woff') format('woff');
+  src: url('fonts/Gramatika-Black.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -48,6 +47,7 @@ body{
     margin-bottom: 10px;
 }
 .glitch{
+    background-repeat: no-repeat;
     width: 100%;
     height: 120px;
     background: url('./images/main.png');
@@ -80,7 +80,7 @@ body{
     }
     100%{
         background: url('./images/main.png');
-        background-size: contain;
+        background-size: cover;
         opacity: 1;
     }
 }
@@ -119,7 +119,7 @@ button, button::after {
     width: 80%;
     height: 80px;
     font-size: 36px;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'GramatikaBlack';
     background: #1DD25E;
     border: 0;
     color: #fff;

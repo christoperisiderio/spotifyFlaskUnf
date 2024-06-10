@@ -1,28 +1,46 @@
 # app/routes.py
 
 from flask import render_template, redirect, url_for, request, flash
-from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from App import app
 from App.models import User
 from .spotify import get_token, search_for_artist, search_for_song, get_artist_details, get_artist_top_tracks, get_top_artists, get_top_albums
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
+
+@login_required
+@app.route('/home')
+def index(username=None):
+    return render_template('home.html', username=username)
+
 @app.route('/')
-def index():
+def landpage():
+    if current_user.is_authenticated:
+        return redirect(url_for('base', username=current_user.id))
     return render_template('base.html')
 
+@login_required
+@app.route('/base/<username>')
 @app.route('/base')
-def base():
-    token = get_token()
-    if token:
-        top_artists = get_top_artists(token)
-        top_albums = get_top_albums(token)
-        return render_template('index.html', top_artists=top_artists, top_albums=top_albums)
-    return render_template('index.html', top_artists=[], top_albums=[])
+def base(username=None):
+    # token = get_token()
+    # if token:
+    #     top_artists = get_top_artists(token)
+    #     top_albums = get_top_albums(token)
+    #     return render_template('home.html', top_artists=top_artists, top_albums=top_albums)
+    # return render_template('home.html', top_artists=[], top_albums=[])
+    return render_template('home.html', username=username)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('base'))
+        return redirect(url_for('base', username=current_user.id))
     
     if request.method == 'POST':
         user_id = request.form['user_id']
@@ -30,7 +48,7 @@ def login():
         user = User.validate(user_id, password)
         if user:
             login_user(user)
-            return redirect(url_for('base'))
+            return redirect(url_for('base', username=current_user.id))
         else:
             flash('Invalid user ID or password')
             return redirect(url_for('login'))
@@ -40,13 +58,12 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
-
+    return redirect(url_for('landpage'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('base'))
+        return redirect(url_for('base', username=current_user.id))
     
     if request.method == 'POST':
         user_id = request.form['user_id']
@@ -59,12 +76,13 @@ def register():
         user = User.create(user_id, password)
         if user:
             login_user(user)
-            return redirect(url_for('base'))
+            return redirect(url_for('base', username=user_id))
         else:
             flash('User ID already exists')
             return redirect(url_for('register'))
     
     return render_template('register.html')
+
 
 @app.route('/search', methods=['GET', 'POST'])
 @login_required

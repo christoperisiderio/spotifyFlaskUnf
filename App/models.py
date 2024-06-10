@@ -1,5 +1,3 @@
-# app/models.py
-
 from flask_login import UserMixin
 
 # In-memory user store
