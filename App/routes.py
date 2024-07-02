@@ -23,6 +23,7 @@ def homepage(username=None):
     return render_template('rightHome.html', username=username)
 
 @app.route('/playlists')
+@app.route('/playlists/<username>')
 @login_required
 def playlists(username = None):
     if username is None and current_user.is_authenticated:
