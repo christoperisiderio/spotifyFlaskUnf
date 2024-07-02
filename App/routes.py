@@ -14,9 +14,27 @@ def load_user(user_id):
     return User.get(user_id)
 
 
+@app.route('/homepage')
+@app.route('/homepage/<username>')
 @login_required
+def homepage(username=None):
+    if username is None and current_user.is_authenticated:
+        username = current_user.id
+    return render_template('rightHome.html', username=username)
+
+@app.route('/playlists')
+@login_required
+def playlists(username = None):
+    if username is None and current_user.is_authenticated:
+        username = current_user.id
+    return render_template('rightHome2.html', username = username);
+
+
 @app.route('/home')
+@login_required
 def index(username=None):
+    if username is None and current_user.is_authenticated:
+        username = current_user.id
     return render_template('home.html', username=username)
 
 @app.route('/')
@@ -40,7 +58,7 @@ def base(username=None):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('base', username=current_user.id))
+        return redirect(url_for('homepage', username=current_user.id))
     
     if request.method == 'POST':
         user_id = request.form['user_id']
@@ -48,7 +66,7 @@ def login():
         user = User.validate(user_id, password)
         if user:
             login_user(user)
-            return redirect(url_for('base', username=current_user.id))
+            return redirect(url_for('homepage', username=current_user.id))
         else:
             flash('Invalid user ID or password')
             return redirect(url_for('login'))
@@ -63,7 +81,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('base', username=current_user.id))
+        return redirect(url_for('homepage', username=current_user.id))
     
     if request.method == 'POST':
         user_id = request.form['user_id']
@@ -76,7 +94,7 @@ def register():
         user = User.create(user_id, password)
         if user:
             login_user(user)
-            return redirect(url_for('base', username=user_id))
+            return redirect(url_for('homepage', username=user_id))
         else:
             flash('User ID already exists')
             return redirect(url_for('register'))

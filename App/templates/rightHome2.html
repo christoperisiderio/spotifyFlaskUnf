@@ -1,0 +1,66 @@
+{% extends "home.html" %}
+
+{% block innerContent %}
+<div class="inner-content">
+    <img id="chosenImg" src="">
+    <div class="info">
+        <h4 id="playlistTitle">Title</h4>
+        <p>Playlist - Christoper Isiderio</p>
+    </div>
+</div>
+<div class="create-playlist">
+    <div class="ctext">
+        <h5>Create your first playlist</h5>
+        <p>It's easy, we'll help you</p>
+    </div>
+    <div class="e">Create Playlist</div>
+</div>
+<div class="create-playlist">
+    <div class="ctext">
+        <h5>Let's find some podcasts to follow</h5>
+        <p>We'll keep you updated on new episodes</p>
+    </div>
+    <div class="c">Browse Podcasts</div>
+</div>
+{% endblock %}
+
+
+{% block content%}
+    <div class="content-right">
+        <div class="image">
+            <img id="img" src="{{ url_for('static', filename='images/home/cover.jpg') }}">
+            <p id="photo">Choose photo</p>
+        </div>
+        <div class="image-info">
+            <p>Public Playlist</p>
+            <h1>I HAVE NO ENEMIES</h1>
+            <p style="color: #A0A0A0; font-size: 12px;">After Villain Arc. IG: @topeeezxcy</p>
+            <div class="small-details">
+                <img src="{{ url_for('static', filename='images/home/1.jpg') }}">
+                <p><strong>Christoper Isiderio - 171 items, 9hr 23min</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="play-shuffle">
+        <div class="play">
+            <i class="fa-sharp fa-solid fa-circle-play" style="font-size: 55px; color: #1ED660;"></i>
+            <i class="fa-solid fa-shuffle" style="font-size: 25px;"></i>
+            <i class="fa-solid fa-circle-arrow-down" style="font-size: 25px; color: #1ED660;"></i>
+            <i class="fa-solid fa-user-plus" style="font-size: 25px;"></i>
+            <i class="fa-solid fa-ellipsis" style="font-size: 25px;"></i>
+        </div>
+        <div class="date">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <p>Date added</p>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div> 
+    <div class="musics">
+        <p class="music-title" style="font-size: 15px; margin-bottom: 10px; margin-left: 20px;"><strong># Title</strong></p>
+        <p class="music-title" style="font-size: 15px; margin-bottom: 30px;"><strong>Album or Podcast</strong></p>
+        <p class="music-title" style="font-size: 15px;"><strong>Date added</strong></p>
+        <p class="music-title" style="font-size: 15px;"><i class="fa-regular fa-clock"></i></p>
+    </div>
+        
+    
+{% endblock %}

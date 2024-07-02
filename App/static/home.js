@@ -1,10 +1,7 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function (){
-    const progressbar = document.querySelector("#barr");
+const progressbar = document.querySelector("#barr");
 const photo = document.querySelector("#photo");
-const dot = document.getElementById('dott');
+const dot = document.querySelector('#dott');
 const innerBar = document.querySelector(".innerbar");
 const innerContents = document.querySelectorAll(".inner-content");
 const bar = document.querySelector('.bar');
@@ -21,8 +18,165 @@ const saveButton = document.getElementById('saveButton');
 const chosenImg = document.getElementById('chosenImg');
 const playlistTitle = document.getElementById('playlistTitle');
 const playlistnameInput = document.getElementById('playlistname');
+const innerclick = document.querySelector('.innerclick');
+const innerclick2 = document.querySelector('.innerclick2');
+const inneroption = document.querySelector('.inner-option');
+const innerA = document.querySelectorAll('.inner-option > a');
+const optionBottomLeft = document.querySelector('.option-bottom-left');
+const info = document.querySelector('.info');
 
-    let selectedImage = null;
+let selectedImage = null;
+
+info.addEventListener("click", () => {
+    window.location.href= "/playlists";
+});
+
+
+let translateX = -80;
+
+
+c.addEventListener("click", () => {
+    blockdiv.classList.add("active");
+    console.log("clicked c");
+});
+
+x.addEventListener("click", () => {
+    blockdiv.classList.remove("active");
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        blockdiv.classList.remove("active");
+    }
+});
+
+progressbar.addEventListener('mouseover', () => {
+    dot.style.width = "12px";
+    innerBar.style.background = "#1ed660";
+});
+progressbar.addEventListener('mouseout', () => {
+    dot.style.width = "10px";
+    innerBar.style.background = "";
+});
+
+dot.addEventListener('mousedown', function(event) {
+        
+    event.preventDefault();
+
+    const barRect = bar.getBoundingClientRect();
+    const barWidth = barRect.width;
+
+    function onMouseMove(e) {
+        let newLeft = e.clientX - barRect.left;
+
+        if (newLeft < 0) {
+            newLeft = 0;
+        } else if (newLeft > barWidth) {
+            newLeft = barWidth;
+        }
+
+        const newWidthPercentage = (newLeft / barWidth) * 100;
+        dot.style.left = `calc(${newWidthPercentage}% - 5px)`;
+        if (newWidthPercentage > 1){
+            document.querySelector('.innerbar').style.width = `${newWidthPercentage}%`;
+        }else{
+            document.querySelector('.innerbar').style.width = '1%';
+        }
+    }
+
+    function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+});
+    const lastCardObserver = new IntersectionObserver(
+        entries => {
+            const lastCard = entries[0]
+            if(lastCard.isIntersecting){
+                innerclick.style.scale = "0 1";
+                optionBottomLeft.classList.add('inactive');
+            }else{
+                innerclick.style.scale = "1 1";
+                optionBottomLeft.classList.remove('inactive');
+            }
+        },
+        {
+            threshold: 1,
+        }
+    );
+
+    saveButton.addEventListener('click', () => {
+        const playlistName = playlistnameInput.value;
+
+        if (selectedImage && playlistName) {
+            if (selectedImage) {
+                chosenImg.src = selectedImage;
+            }
+
+            if (playlistName) {
+                playlistTitle.textContent = playlistName;
+            }
+            createP.forEach(create => {
+                create.style.display = "none";
+            });
+
+            innerContents.forEach(innerContent => {
+                innerContent.style.display = "flex";
+            });
+
+            blockdiv.classList.remove("active");
+        } else {
+            window.alert('Please choose an image or enter a playlist name.'); 
+        }
+       
+    });
+    const firstCardObserver = new IntersectionObserver(
+        entries => {
+            const firstCard = entries[0]
+            if(firstCard.isIntersecting){
+                innerclick2.style.scale = "0 1";
+                optionBottomLeft.classList.remove('active');
+                translateX = 0;
+            }else{
+                innerclick2.style.scale = "1 1";
+            }
+        },
+        {
+            threshold: 1,
+        }
+    );
+    
+
+    lastCardObserver.observe(document.querySelector(".inner-option > a:last-child"))
+    firstCardObserver.observe(document.querySelector(".inner-option > a:first-child"))
+
+    
+    innerclick.addEventListener("click", () => {
+        console.log(translateX);
+        translateX-=80;
+        if(translateX === 0){
+            inneroption.style.transform = `translateX(${translateX}px)`;
+            optionBottomLeft.classList.remove('active');
+            innerclick2.style.opacity = "0";
+        }else{
+            innerclick2.style.opacity = "1";
+            optionBottomLeft.classList.add('active');
+            inneroption.style.transform = `translateX(${translateX}px)`;
+        }
+        
+    });
+
+    innerclick2.addEventListener("click", () =>{ 
+        console.log(translateX);  
+        translateX+=80;
+        inneroption.style.transform = `translateX(${translateX}px)`;
+    });
+
+
+       
 
         detailsImg.addEventListener('click', () => {
             fileInput.click();
@@ -46,30 +200,7 @@ const playlistnameInput = document.getElementById('playlistname');
             }
         });
 
-        saveButton.addEventListener('click', () => {
-            const playlistName = playlistnameInput.value;
-
-            if (selectedImage || playlistName) {
-                if (selectedImage) {
-                    chosenImg.src = selectedImage;
-                }
-
-                if (playlistName) {
-                    playlistTitle.textContent = playlistName;
-                }
-                createP.forEach(create => {
-                    create.style.display = "none";
-                });
-
-                innerContents.forEach(innerContent => {
-                    innerContent.style.display = "flex";
-                });
-
-                
-            } else {
-                alert('Please choose an image or enter a playlist name.');
-            }
-        });
+       
 
 
     image.addEventListener("mouseover", () => {
@@ -85,65 +216,6 @@ const playlistnameInput = document.getElementById('playlistname');
         blockdiv.classList.remove("active");
     });
 
-
-    c.addEventListener("click", () => {
-        blockdiv.classList.add("active");
-    });
-
-    x.addEventListener("click", () => {
-        blockdiv.classList.remove("active");
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            blockdiv.classList.remove("active");
-        }
-    });
-
-    dot.addEventListener('mousedown', function(event) {
-        event.preventDefault();
-    
-        const barRect = bar.getBoundingClientRect();
-        const barWidth = barRect.width;
-    
-        function onMouseMove(e) {
-            let newLeft = e.clientX - barRect.left;
-    
-            if (newLeft < 0) {
-                newLeft = 0;
-            } else if (newLeft > barWidth) {
-                newLeft = barWidth;
-            }
-    
-            const newWidthPercentage = (newLeft / barWidth) * 100;
-            dot.style.left = `calc(${newWidthPercentage}% - 5px)`;
-            if (newWidthPercentage > 1){
-                document.querySelector('.innerbar').style.width = `${newWidthPercentage}%`;
-            }else{
-                document.querySelector('.innerbar').style.width = '1%';
-            }
-        }
-    
-        function onMouseUp() {
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        }
-    
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
-    });
-
-
-
-    progressbar.addEventListener('mouseover', () => {
-        dot.style.width = "12px";
-        innerBar.style.background = "#1ed660";
-    });
-    progressbar.addEventListener('mouseout', () => {
-        dot.style.width = "10px";
-        innerBar.style.background = "";
-    });
-    
     innerContents.forEach(innerContent => {
         let count = 1;
         innerContent.addEventListener("click", () => {
@@ -155,10 +227,6 @@ const playlistnameInput = document.getElementById('playlistname');
             }
             count = count + 1;
         });
-    });
-
-    dot.addEventListener("hold", () =>{
-        console.log("ge");
     });
 });
 

@@ -1,0 +1,160 @@
+{% extends "home.html" %}
+
+{% block innerContent %}
+<div class="inner-content">
+    <img id="chosenImg" src="">
+    <div class="info">
+        <h4 id="playlistTitle">Title</h4>
+        <p>Playlist - Christoper Isiderio</p>
+    </div>
+</div>
+<div class="create-playlist">
+    <div class="ctext">
+        <h5>Create your first playlist</h5>
+        <p>It's easy, we'll help you</p>
+    </div>
+    <div class="e">Create Playlist</div>
+</div>
+<div class="create-playlist">
+    <div class="ctext">
+        <h5>Let's find some podcasts to follow</h5>
+        <p>We'll keep you updated on new episodes</p>
+    </div>
+    <div class="c">Browse Podcasts</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="content-grid-header" id="homePage">
+    <h1>Welcome, {{ username.upper() }}</h1>
+    <a href="">Show all</a>
+</div>
+<div class="grid1">
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/tambalanpodcast.jpg') }}">
+        <h3>Tambalan Podcast</h3>
+        <p>Listen to your local podcasts.</p>   
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/tatakpinoy.jpeg') }}">
+        <h3>Tatak Pinoy</h3>
+        <p>Latest OPM hits on Spotify.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+</div>
+<div class="content-grid-header">
+    <h1>Shows to try</h1>
+    <a href="">Show all</a>
+</div>
+<div class="grid1">
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+</div>
+<div class="content-grid-header">
+    <h1>Featured Charts</h1>
+    <a href="">Show all</a>
+</div>
+<div class="grid1">
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+    <div class="grid-card">
+        <img src="{{ url_for('static', filename='images/hothits.jpeg') }}">
+        <h3>Hot Hits Philippines</h3>
+        <p>Best tracks from the world of OPM and pop.</p>
+    </div>
+</div>
+<footer>
+    <div class="grid1" style="padding: 25px; gap: 0px; font-size: 25px;">
+        <div class="grid-card g2">
+           <h3>Company</h3>
+            <p>About</p>
+            <p>Jobs</p>
+            <p>For the record</p>
+        </div>
+        <div class="grid-card g2">
+            <h3>Communities</h3>
+            <p>For Artists</p>
+            <p>For Developers</p>
+            <p>Advertising</p>
+            <p>Investor</p>
+            <p>Vendors</p>
+        </div>
+        <div class="grid-card g2">
+            <h3>Useful links</h3>
+            <p>Support</p>
+            <p>Free Mobile App</p>
+        </div>
+        <div class="grid-card g2">
+            <h3>Spotify Plans</h3>
+            <p>Premium Individual</p>
+            <p>Premium Duo</p>
+            <p>Premium Family</p>
+            <p>Premium Student</p>
+            <p>Spotify Free</p>
+        </div>
+        <!-- <div class="grid-icon">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook"></i>
+        </div> -->
+    </div>
+</footer>
+<div class="line">
+    <div class="innerline"></div>
+</div>
+<div class="lastfooter">
+    <div class="leftfooter">
+        <p>Legal</p>
+        <p>Safety & Privacy Center</p>
+        <p>Privacy Policy</p>
+        <p>Cookies</p>
+        <p>About Ads</p>
+        <p>Accessibility</p>
+    </div>
+    <div class="rightfooter">
+        <p>&copy;&nbsp;2024 Spotify AB</p>
+    </div>
+</div>
+{% endblock %}
