@@ -22,14 +22,6 @@ def homepage(username=None):
         username = current_user.id
     return render_template('rightHome.html', username=username)
 
-@app.route('/playlists')
-@app.route('/playlists/<username>')
-@login_required
-def playlists(username = None):
-    if username is None and current_user.is_authenticated:
-        username = current_user.id
-    return render_template('rightHome2.html', username = username);
-
 
 @app.route('/home')
 @login_required
@@ -102,6 +94,14 @@ def register():
     
     return render_template('register.html')
 
+
+@app.route('/playlists')
+@app.route('/playlists/<username>')
+@login_required
+def playlists(username=None):
+    if username is None and current_user.is_authenticated:
+        username = current_user.id
+    return render_template('rightHome2.html', username=username)
 
 @app.route('/search', methods=['GET', 'POST'])
 @login_required
